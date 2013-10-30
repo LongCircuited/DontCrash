@@ -12,7 +12,7 @@ var express = require('express'),
 	  app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
 
 	});
-
+ 
 	io.sockets.on('connection', function(socket) {
 
 	});

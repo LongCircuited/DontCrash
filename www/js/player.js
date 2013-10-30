@@ -15,22 +15,60 @@ var Game = window.Game || {};
     }
 
     Player.prototype.update = function (context, mod) {
-        if (!this.bounding.within( GameScene.roadBounding )) {
-            this.speed = 0.5;
-        } else {
-            this.speed = 2;
-        }
+      
+       if(this.speed >= 8){
+           this.speed = 8;
+          
+       } else {
+           if (!this.bounding.within( GameScene.roadBounding )) {
+               this.speed = 0.5;
+           }
+       }
+        
         if (37 in keysDown) {
-            this.x -= this.speed;
-        }
+            keyDown = true; 
+            this.speed += 0.1 / mod;
+            
+            this.x -= 2;
+         } else {
+            keyDown = false;
+        } 
         if (39 in keysDown) {
-           this.x += this.speed;
+            keyDown = true;
+            this.speed += 0.1 / mod;
+            
+            this.x += 2;
+        } else {
+            keyDown = false;
         }
         if(40 in keysDown) {
-            this.y += this.speed;
+            keyDown = true; 
+            //this.speed -= 0.1 / mod;
+            
+            this.y += 1;
+        } else {
+            keyDown = false;
         }
         if(38 in keysDown) {
-            this.y -= this.speed;
+            keyDown = true;
+            this.speed += 0.1 / mod;
+            
+            //this.y -= 1 / mod;
+        } else {
+            keyDown = false;
+        }
+        
+        if( keyDown == false ){
+            
+            if( this.speed <= 0.1) {
+                
+            } else {
+                this.speed -= 0.01;
+            }
+            
+            
+    
+      
         }
         this.bounding.set(this.x, this.y, this.w, this.h);
         context.fillStyle = this.colour;

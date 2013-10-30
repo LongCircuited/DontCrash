@@ -9,7 +9,7 @@ var Game = window.Game || {};
         this.roadBounding = new Game.Utils.Rectangle(canvasWidth/4, 0, canvasHeight/2,canvasHeight)
     }
     Scene.prototype.update = function (context, mod) {
-        pyy += (50  * player.speed) / mod;
+        pyy += 50  * player.speed / mod;
         this.bounding.set(0, 0, canvas.width, canvas.height);
         this.roadBounding.set(canvas.width/4, 0, canvas.height/2,canvas.height);
         context.strokeRect(0, 0, canvas.width, canvas.height);
