@@ -40,30 +40,29 @@ Game.Utils = {};
 
 		// add "class" Rectangle to our Game object
 		Game.Utils.Rectangle = Rectangle;
-	})();
+    
+    
+        // Array Remove - By John Resig (MIT Licensed)
+        Array.prototype.remove = function(from, to) {
+            var rest = this.slice((to || from) + 1 || this.length);
+            this.length = from < 0 ? this.length + from : from;
+            return this.push.apply(this, rest);
+        };
 
-Game.Utils.Key = {
-  _pressed: {},
- 
-  LEFT: 37,
-  UP: 38,
-  RIGHT: 39,
-  DOWN: 40,
- 
-  isDown: function(keyCode){
-    return this._pressed[keyCode];
-  },
- 
-  onKeydown: function(event){
-    this._pressed[event.keyCode] = true;
-  },
- 
-  onKeyup: function(event){
-    delete this._pressed[event.keyCode];
-  }
-};
- 
-window.addEventListener('keyup', function(event) { Key.onKeyup(event); }, false);
-window.addEventListener('keydown', function(event) { Key.onKeydown(event); }, false);
+   
+
+})();
+
+var keysDown = {};
+
+    addEventListener("keydown", function (e) {
+	   keysDown[e.keyCode] = true;
+    }, false);
+
+    addEventListener("keyup", function (e) {
+	   delete keysDown[e.keyCode];
+    }, false);
+
+
 
 

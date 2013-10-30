@@ -3,7 +3,7 @@
 var Game = window.Game || {};
 
 (function () {
-    function Car(x, y, w, h, vx, vy, colour, type) {
+    function Powerup(x, y, w, h, vx, vy, colour, type) {
         this.x = x;
         this.y = y;
         this.w = w;
@@ -14,13 +14,13 @@ var Game = window.Game || {};
         this.colour = colour;
         this.bounding = new Game.Utils.Rectangle(this.x, this.y, this.w, this.h);
     }
-    Car.prototype.update = function (context) {
+    Powerup.prototype.update = function (context) {
         this.bounding.set(this.x, this.y, this.w, this.h);
         context.fillStyle = this.colour;
         context.fillRect(this.x, this.y, this.w, this.h);
     };
 
-    Game.Car = {
-        car : Car
+    Game.Powerup = {
+        powerup : Powerup
     };
 })();

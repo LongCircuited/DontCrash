@@ -23,11 +23,13 @@ var running = false;
 var LastFrameTime = 0;
 var TimeSinceLastFrame = 0;
 var FPS = 0;
-var canvasWidth = 500;
-var canvasHeight = 500;
+var canvasWidth = 400;
+var canvasHeight = 400;
+var paused = false;
 
 var Engine = function () {
     running = true;
+
     console.log("Initializing");
     if( !Game.Main ){
         console.error("Main class not found!");
@@ -43,6 +45,7 @@ var Engine = function () {
         e.preventDefault();
         return false;
     }
+
     this.draw(TimeSinceLastFrame);
     console.log("Done");
 }
@@ -54,13 +57,18 @@ Engine.prototype.draw = function(timeSinceLastFrame) {
         context.imageSmoothingEnabled = false;
         context.clearRect(0, 0, canvasWidth, canvasHeight);
         context.font = "normal 20pt Arial";
-        context.fillText(FPS.toFixed(1),0,20);
-
+       
         
+        
+        GameScene.update(context, timeSinceLastFrame);
+        player.update(context, timeSinceLastFrame);
+    
+        context.fillStyle = "white";
+        context.fillText(FPS.toFixed(1),5,25);
         requestAnimFrame(function() {
             var now = new Date();
             TimeSinceLastFrame = LastFrameTime ? (now - LastFrameTime) : 0;
-            instance.resize();
+            //instance.resize();
             instance.draw(TimeSinceLastFrame);
             LastFrameTime = now;
             FPS = 1/(TimeSinceLastFrame / 1000);
@@ -78,7 +86,10 @@ Engine.prototype.shutdown = function () {
     running = false;
     instance = null;
 };
-
+Engine.prototype.restart = function () {
+    this.shutdown();
+    instance = new Engine();
+}
 Engine.prototype.resize = function () {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
@@ -99,5 +110,8 @@ Game.Engine = {
             instance.shutdown();
         }
         return true;
+    },
+    restart : function () {
+        instance.restart();
     }
 }
