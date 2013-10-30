@@ -11,16 +11,19 @@ var Game = window.Game || {};
     Scene.prototype.update = function (context, mod) {
         pyy += 50  * player.speed / mod;
         this.bounding.set(0, 0, canvas.width, canvas.height);
-        this.roadBounding.set(canvas.width/4, 0, canvas.height/2,canvas.height);
+        this.roadBounding.set(canvas.width/4,0,canvas.width/2,canvas.height);
         context.strokeRect(0, 0, canvas.width, canvas.height);
         context.fillStyle = "green";
         context.fillRect(0,0,canvas.width,canvas.height);
         context.fillStyle = "gray";
         context.fillRect(canvas.width/4,0,canvas.width/2,canvas.height);
+     
         context.fillStyle = "white";
         /*FAKE ENDLESSNESS*/
         context.fillRect(canvas.width/2,pyy,10,200);
         context.fillRect(canvas.width/2,pyy-350,10,200);
+        context.fillStyle = "yellow";
+        context.fillRect(canvas.width/2,pyy-100,10,10)
         if (pyy >= canvas.height + 350) {
             pyy = -200;
         }

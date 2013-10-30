@@ -52,6 +52,10 @@ Game.Utils = {};
    
 
 })();
+ function RandRange (min, max){
+        var random = Math.floor(Math.random() * (max - min + 1)) + min;
+            return random;
+    }
 CanvasRenderingContext2D.prototype.dashedLine = function(x1, y1, x2, y2, dashLen) {
     if (dashLen == undefined) dashLen = 2;
     

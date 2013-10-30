@@ -23,8 +23,8 @@ var running = false;
 var LastFrameTime = 0;
 var TimeSinceLastFrame = 0;
 var FPS = 0;
-var canvasWidth = 400;
-var canvasHeight = 400;
+var canvasWidth = window.innerWidth;
+var canvasHeight = window.innerHeight;
 var paused = false;
 
 var Engine = function () {
@@ -62,13 +62,14 @@ Engine.prototype.draw = function(timeSinceLastFrame) {
         
         GameScene.update(context, timeSinceLastFrame);
         player.update(context, timeSinceLastFrame);
-    
+        checkCars(context);
+   // console.log(player.speed);
         context.fillStyle = "white";
         context.fillText(FPS.toFixed(1),5,25);
         requestAnimFrame(function() {
             var now = new Date();
             TimeSinceLastFrame = LastFrameTime ? (now - LastFrameTime) : 0;
-            //instance.resize();
+            instance.resize();
             instance.draw(TimeSinceLastFrame);
             LastFrameTime = now;
             FPS = 1/(TimeSinceLastFrame / 1000);
