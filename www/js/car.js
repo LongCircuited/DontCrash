@@ -19,13 +19,15 @@ var Game = window.Game || {};
         this.bounding.set(this.x, this.y, this.w, this.h);
         context.fillStyle = this.colour;
         
-        context.fillRect(this.x, this.y, this.w, this.h);
+        context.drawImage(playerimage,this.x, this.y, this.w, this.h);
       if ( this.lane === 0 ){
-          this.y += (this.vy * player.speed);
+          this.y += (this.vy / (player.speed/2));
       } else {
-          this.y -= (this.vy * player.speed);
+          this.y -= (this.vy / (player.speed/2));
       }
-             
+             if( this.bounding.overlaps( this.bounding )) {
+                 this.w = 100;
+             } 
               
             
                

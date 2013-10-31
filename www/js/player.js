@@ -18,8 +18,8 @@ var Game = window.Game || {};
 
     Player.prototype.update = function (context, mod) {
       
-       if(this.speed >= 2){
-           this.speed = 2;
+       if(this.speed >= 10){
+           this.speed = 10;
           
        } else {
            if (!this.bounding.within( GameScene.roadBounding )) {
@@ -62,8 +62,8 @@ var Game = window.Game || {};
         
         if( keyDown == false ){
             
-            if( this.speed <= 0.1) {
-                this.speed = 0.1;
+            if( this.speed <= 0.7) {
+                this.speed = 0.7;
             } else {
                 this.speed -= 0.01;
             }

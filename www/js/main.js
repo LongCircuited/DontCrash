@@ -15,7 +15,7 @@ var powerups = [];
 
 window.onload = function () {
     Game.Engine.init();
-        initCars();
+    initCars();
 };
 
 Game.Main = {
