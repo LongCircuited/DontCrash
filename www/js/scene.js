@@ -9,7 +9,7 @@ var Game = window.Game || {};
         this.roadBounding = new Game.Utils.Rectangle(canvasWidth/4, 0, canvasHeight/2,canvasHeight)
     }
     Scene.prototype.update = function (context, mod) {
-        pyy += 50  * player.speed / mod;
+        pyy += player.speed / mod;
         this.bounding.set(0, 0, canvas.width, canvas.height);
         this.roadBounding.set(canvas.width/4,0,canvas.width/2,canvas.height);
         context.strokeRect(0, 0, canvas.width, canvas.height);
@@ -25,11 +25,19 @@ var Game = window.Game || {};
         context.fillStyle = "yellow";
         context.fillRect(canvas.width/2,pyy-100,10,10)
         if (pyy >= canvas.height + 350) {
-            pyy = -200;
+           pyy = -200;
         }
+       
+        
         
     };
-
+    Scene.prototype.reset = function (context) {
+        player.y = canvas.height - 80;
+        player.speed = 30;
+        cars = [];
+        
+        initCars();
+    }
     Game.Scene = {
         Scene : Scene
     };

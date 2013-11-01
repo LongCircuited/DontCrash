@@ -61,8 +61,9 @@ Engine.prototype.draw = function(timeSinceLastFrame) {
         
         
         GameScene.update(context, timeSinceLastFrame);
+        checkCars(context, timeSinceLastFrame);
         player.update(context, timeSinceLastFrame);
-        checkCars(context);
+        
    // console.log(player.speed);
         context.fillStyle = "white";
         context.fillText(FPS.toFixed(1),5,25);
