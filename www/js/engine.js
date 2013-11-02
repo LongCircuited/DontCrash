@@ -64,7 +64,9 @@ Engine.prototype.draw = function(timeSinceLastFrame) {
         GameScene.update(context, timeSinceLastFrame);
           
         checkCars(context, timeSinceLastFrame);
-             
+        
+        checkPowerups(context, timeSinceLastFrame);
+        
         player.update(context, timeSinceLastFrame);
           
    // console.log(player.speed);

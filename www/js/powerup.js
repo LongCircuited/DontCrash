@@ -18,6 +18,8 @@ var Game = window.Game || {};
         this.bounding.set(this.x, this.y, this.w, this.h);
         context.fillStyle = this.colour;
         context.fillRect(this.x, this.y, this.w, this.h);
+        this.x += this.vx;
+        this.y += this.vy;
     };
 
     Game.Powerup = {

@@ -34,10 +34,25 @@ var Game = window.Game || {};
         //if(38 in keysDown) this.y -= this.speed / mod;
       for(var i = 0; i < cars.length; i++){
           if(cars[i].bounding.overlaps( this.bounding )){
-              this.x -= i;
+              this.x += 100;
           }
       }
-       
+        for(var i = 0; i < powerups.length; i++){
+            if(powerups[i].bounding.overlaps( this.bounding )){
+                switch(powerups[i].type){
+                        case "delete-level":
+                             cars = [];
+                        break;
+                        case "make-thin":
+                            this.w = 10;
+                        break;
+                        default:
+                            break;
+                }
+            }
+        
+        }
+      
         this.bounding.set(this.x, this.y, this.w, this.h);
        
       

@@ -33,7 +33,7 @@ var Game = window.Game || {};
     };
     Scene.prototype.reset = function (context) {
         player.y = canvas.height - 200;
-        player.speed = 70;
+        player.speed = 40;
         
         
         initCars();
