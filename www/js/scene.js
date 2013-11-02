@@ -11,7 +11,7 @@ var Game = window.Game || {};
     Scene.prototype.update = function (context, mod) {
         pyy += player.speed / mod;
         this.bounding.set(0, 0, canvas.width, canvas.height);
-        this.roadBounding.set(canvas.width/4,0,canvas.width/2,canvas.height);
+        this.roadBounding.set(canvas.width/4,0,canvas.width/2,canvas.height+100);
         context.strokeRect(0, 0, canvas.width, canvas.height);
         context.fillStyle = "green";
         context.fillRect(0,0,canvas.width,canvas.height);
@@ -32,9 +32,9 @@ var Game = window.Game || {};
         
     };
     Scene.prototype.reset = function (context) {
-        player.y = canvas.height - 80;
-        player.speed = 30;
-        cars = [];
+        player.y = canvas.height - 200;
+        player.speed = 70;
+        
         
         initCars();
     }

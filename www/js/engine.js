@@ -20,6 +20,7 @@ var canvas = null;
 var context = null;
 var instance = null;
 var running = false;
+var debugmode = true;
 var LastFrameTime = 0;
 var TimeSinceLastFrame = 0;
 var FPS = 0;
@@ -57,16 +58,21 @@ Engine.prototype.draw = function(timeSinceLastFrame) {
         context.imageSmoothingEnabled = false;
         context.clearRect(0, 0, canvasWidth, canvasHeight);
         context.font = "normal 20pt Arial";
-       
-        
+      
+      
         
         GameScene.update(context, timeSinceLastFrame);
+          
         checkCars(context, timeSinceLastFrame);
+             
         player.update(context, timeSinceLastFrame);
-        
+          
    // console.log(player.speed);
         context.fillStyle = "white";
         context.fillText(FPS.toFixed(1),5,25);
+        context.fillText("Level: "+level,5,50);
+        context.fillText("Speed: "+player.speed,5,75);
+        context.fillText("Cars: "+cars.length,5,100);
         requestAnimFrame(function() {
             var now = new Date();
             TimeSinceLastFrame = LastFrameTime ? (now - LastFrameTime) : 0;

@@ -27,10 +27,10 @@ Game.Functions = {};
             }
         }
      var addCar = function (type) {
-             cars.push(new Game.Car.car(RandRange(canvas.width/4,canvas.width-(canvas.width/4)),0,20,60,RandRange(0.1,1),RandRange(level*20,level*30),"blue",type)); 
+             cars.push(new Game.Car.car(RandRange(canvas.width/4,canvas.width-(canvas.width/4)),0,20,60,RandRange(0.1,1),RandRange(level*5,level*10),"blue",type)); 
     }
     var initCars = function () {
-     for(var i = 0; i < (level*3); i++) {
+     for(var i = 0; i < (level); i++) {
         if (Math.floor(Math.random()*2)) {
                       addCar("lorry");
                   } else {

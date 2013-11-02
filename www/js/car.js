@@ -16,10 +16,11 @@ var Game = window.Game || {};
     }
     Car.prototype.update = function (context, mod) {
         this.bounding.set(this.x, this.y, this.w, this.h);
-        context.fillStyle = this.colour;
+        context.strokeStyle = "red";
         
+        context.strokeRect(this.x,this.y,this.w,this.h);
         context.drawImage(playerimage,this.x, this.y, this.w, this.h);
-        this.y += this.vy / mod;   
+        this.y += (this.vy / mod);
     };
 
     Game.Car = {
